@@ -15,4 +15,17 @@
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
 	
+	<jaxws:server id="selectApp" serviceClass="org.love320.services.controller.SelectApp" address="/SelectApp">
+	    <jaxws:serviceBean>
+	        <!-- 要暴露的 bean 的引用 -->
+	        <ref bean="userServiceBean"/>
+	    </jaxws:serviceBean>
+	    <jaxws:inInterceptors>
+	        <ref bean="inMessageInterceptor"/>
+	    </jaxws:inInterceptors>
+	    <jaxws:outInterceptors>
+	        <ref bean="outLoggingInterceptor"/>
+	    </jaxws:outInterceptors>
+	</jaxws:server>	
+	
 </beans>
